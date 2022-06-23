@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from ntpath import join
 from pathlib import Path
+import django_heroku
 import os
 from corsheaders.defaults import default_headers
 from datetime import timedelta
@@ -187,3 +188,5 @@ CSRF_TRUSTED_ORIGINS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+django_heroku.settings(locals())

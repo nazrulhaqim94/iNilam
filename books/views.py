@@ -2,7 +2,6 @@ from traceback import print_tb
 import uuid
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from django.http import HttpResponse
 from .models import Books
 from .serializers import BooksSerializersInput, BooksSerializers, BooksSerializersAll, BooksSerializersUID
 from django.utils.decorators import method_decorator
@@ -20,7 +19,7 @@ class BookInputView(APIView):
         try:
             return Books.objects.get(created_by=id)
         except:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'Sesuatu telah berlaku'})
 
     def post(self, request):
         
@@ -47,7 +46,7 @@ class BookGetByID(APIView):
         try:
             return Books.objects.get(uid=id)
         except Books.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'Sesuatu telah berlaku'})
 
     def get(self, request, id):
         books = self.get_object(id)
@@ -71,7 +70,7 @@ class BookGetByIDTeacher(APIView):
         try:
             return Books.objects.get(uid=id)
         except Books.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'Sesuatu telah berlaku'})
 
     def get(self, request, id):
         books = self.get_object(id)
@@ -95,7 +94,7 @@ class BookGetByIDApproval(APIView):
         try:
             return Books.objects.get(uid=id)
         except Books.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'Sesuatu telah berlaku'})
     
     def put(self, request, id):
         data = request.data
@@ -118,7 +117,7 @@ class LangChoicesView(APIView):
 
             itered_dict = {"key": key, "value": value}
             my_choices.append(itered_dict)
-        return Response(my_choices, status=status.HTTP_200_OK)
+        return Response(my_choices)
 
 class TagChoicesView(APIView):
     def get(self, request, format=None):
@@ -129,13 +128,13 @@ class TagChoicesView(APIView):
 
             itered_dict = {"key": key, "value": value}
             my_choices.append(itered_dict)
-        return Response(my_choices, status=status.HTTP_200_OK)
+        return Response(my_choices)
 
 class RankingStudentView(APIView):
     def get(self, request):
         test = Books.objects.filter(approval_status="Approved").values("created_by").annotate(book_count=Count('pk')).order_by('created_by')
 
-        return Response(test, status=status.HTTP_200_OK)
+        return Response(test)
 
     def post(self, request, format=None):
         
@@ -148,6 +147,6 @@ class RankingStudentView(APIView):
 
         print(filtered_data)
 
-        return Response(filtered_data, status=status.HTTP_200_OK)
+        return Response(filtered_data)
 
 

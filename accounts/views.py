@@ -1,5 +1,4 @@
 from .models import User
-from django.http import HttpResponse
 from numpy import append, empty
 from rest_framework.views import APIView
 from rest_framework import permissions
@@ -23,7 +22,7 @@ class RoleChoices(APIView):
 
             itered_dict = {"key": key, "value": value}
             my_choices.append(itered_dict)
-        return Response(my_choices, status=status.HTTP_200_OK)
+        return Response(my_choices)
 
 class DarjahChoices(APIView):
     permission_classes = (AllowAny, )
@@ -35,7 +34,7 @@ class DarjahChoices(APIView):
 
             itered_dict = {"key": key, "value": value}
             my_choices.append(itered_dict)
-        return Response(my_choices, status=status.HTTP_200_OK)
+        return Response(my_choices)
 
 class KelasChoices(APIView):
     permission_classes = (AllowAny, )
@@ -47,7 +46,7 @@ class KelasChoices(APIView):
 
             itered_dict = {"key": key, "value": value}
             my_choices.append(itered_dict)
-        return Response(my_choices, status=status.HTTP_200_OK)
+        return Response(my_choices)
 
 class CheckAuthenticatedView(APIView):
     def get(self, request, format=None):

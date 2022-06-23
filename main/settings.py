@@ -88,12 +88,20 @@ WSGI_APPLICATION = 'main.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'NILAM_DEV',
+    #     'USER' : 'postgres',
+    #     'PASSWORD': 'asdas-123',
+    #     'HOST' : 'localhost',
+    # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'NILAM_DEV',
-        'USER' : 'postgres',
-        'PASSWORD': 'asdas-123',
-        'HOST' : 'localhost',
+        'NAME': 'd5pv7cra9vm8eq',
+        'USER' : 'cyhtvupmjtocdi',
+        'PASSWORD': 'c13d08097de121a8ab87c502d30a0b9605f3c20c991da440fbf197df710fdba8',
+        'HOST' : 'ec2-44-205-41-76.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 

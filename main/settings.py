@@ -20,7 +20,7 @@ from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # BASE_URL = 'http://localhost:8000/'
-BASE_URL = 'https://inilam.herokuapp.com/'
+BASE_URL = 'https://enilam.herokuapp.com/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -188,6 +188,7 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
 CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1:8000',
     'http://localhost:8000',
+    'https://enilam.herokuapp.com/',
     ]
 
 # Default primary key field type
